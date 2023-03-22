@@ -4,7 +4,7 @@
 ## Edit input.txt files in each day to match yours. Make sure, input has last empty line 
 example input file:
 ```
-A X
-B Y
+A X⏎
+B Y⏎
 
 ```
