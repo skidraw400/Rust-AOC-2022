@@ -16,7 +16,7 @@ fn main() -> std::io::Result<()> {
 
     println!("Remember to check, if input.txt HAS blank line in the end");
     println!("Part One: {}", part_one(input_lines.clone()));
-    // println!("Part Two: {}", part_two(input_lines.clone()));
+    println!("Part Two: {}", part_two(input_lines.clone()));
     
     Ok(())
     
@@ -39,6 +39,19 @@ fn part_one(input_lines: Vec<String>) -> usize {
     shared
 }
 
-// fn part_two(input_lines: Vec<String>) -> usize {
-//     0
-// }
+fn part_two(input_lines: Vec<String>) -> usize {
+    let mut shared = 0;
+    let groups = input_lines.len()/3;
+    for group in 0..groups {
+        let first: Vec <char> = input_lines[group*3].chars().collect();
+        let mut priorities = 0;
+        for cha in first {
+            if input_lines[group*3+1].contains(cha) && input_lines[group*3+2].contains(cha) {
+                priorities = "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".rfind(cha).unwrap();
+            }   
+        }
+        shared += priorities;
+    }
+    shared
+}
+
